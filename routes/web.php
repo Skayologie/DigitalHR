@@ -27,11 +27,14 @@ Route::get('/dashboard', function () {
 
 
 Route::middleware(['auth','isAdmin'])->group(function () {
+    Route::post('/Admin/User/Create',[UserController::class,'store'])->name("user.store");
+
+
 
 
     Route::get('/roles', [RoleController::class, 'index'])->name('roles.index');
     Route::patch('/roles', [RoleController::class, 'update'])->name('roles.update');
-    Route::post('/roles', [RoleController::class, 'store'])->name('roles.store');
+    Route::post('/roles/Add', [RoleController::class, 'store'])->name('roles.store');
     Route::delete('/roles/{role}', [RoleController::class, 'destroy'])->name('roles.destroy');
 
 
@@ -41,7 +44,8 @@ Route::middleware(['auth','isAdmin'])->group(function () {
         $roles = Role::all();
         $department = Department::all();
         return view('admin.dashboard',["Roles"=>$roles]);
-    })->name('Admin');;
+    })->name('Admin');
+
     Route::get('/Admin/Dashboard', function () {
         $department = Department::all();
         $roles = Role::all();

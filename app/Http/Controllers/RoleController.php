@@ -38,8 +38,9 @@ class RoleController extends Controller
     {
         //
         $validated = $request->validated();
-        $role = Role::create(['name' => $validated['name']]);
-        $role->permissions()->sync($validated['permissions']);
+
+        $role = role::create(['name' => $validated['name'],'guard_name'=>"web"]);
+        $result = $role->permissions()->sync($validated['permissions']);
         return redirect()->route('roles.index')->with('success', 'Role created successfully!');
     }
 
