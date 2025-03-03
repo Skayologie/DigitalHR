@@ -11,7 +11,7 @@
     <div class="overflow-y-auto h-full py-4">
         <div class="px-4 text-xs text-indigo-300 uppercase font-semibold mb-2">Main</div>
 
-        <x-nav-link :href="route('Admlin')" :active="request()->routeIs('dashboard')">
+        <x-nav-link :href="route('Admin')" :active="request()->routeIs('dashboard')">
             <i class="fas fa-th-large w-6"></i>
             {{ __('Dashboard') }}
         </x-nav-link>
@@ -26,7 +26,7 @@
             {{ __('Roles & Permissions') }}
         </x-nav-link>
 
-        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+        <x-nav-link :href="route('departments.index')" :active="request()->routeIs('dashboard')">
             <i class="fas fa-building w-6"></i>
             {{ __('Manage Departments') }}
         </x-nav-link>

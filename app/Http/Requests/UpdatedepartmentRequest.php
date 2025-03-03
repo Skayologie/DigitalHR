@@ -11,7 +11,7 @@ class UpdatedepartmentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdatedepartmentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "name"=>"nullable|string|min:3|max:25",
+            "description"=>"nullable|min:10|max:100"
         ];
     }
 }

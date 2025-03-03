@@ -32,7 +32,6 @@ class User extends Authenticatable
         'phone_number',
         'address',
         'userImage',
-        'role_id',
         'department_id'
     ];
 
@@ -58,13 +57,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function role(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function role(): HasOne
     {
-        return $this->belongsTo(\App\Models\role::class);
+        return $this->hasOne(role::class,"id");
     }
 
-    public function department()
+    public function department(): HasOne
     {
-        return $this->belongsTo(department::class);
+        return $this->hasOne(department::class,"id");
     }
 }

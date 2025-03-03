@@ -14,6 +14,7 @@ class DepartmentController extends Controller
     public function index()
     {
         //
+        return view("departments.index",["Departments"=>department::all()]);
     }
 
     /**
@@ -30,6 +31,9 @@ class DepartmentController extends Controller
     public function store(StoredepartmentRequest $request)
     {
         //
+        $data = $request->validated();
+        department::create($data);
+        dd($data);
     }
 
     /**
@@ -46,6 +50,7 @@ class DepartmentController extends Controller
     public function edit(department $department)
     {
         //
+        return view("departments.update",["data"=>$department]);
     }
 
     /**
@@ -54,13 +59,24 @@ class DepartmentController extends Controller
     public function update(UpdatedepartmentRequest $request, department $department)
     {
         //
+        $data = $request->validated();
+//        dd($data);
+        $department->update([
+            'name' => $data["name"],
+            'description' => $data["description"],
+        ]);
+
+        return redirect()->route('departments.index')->with('success', 'Department updated successfully!');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(department $department)
+    public function destroy(Department $department)
     {
-        //
+        $department->delete();
+
+        return redirect()->route('departments.index')->with('success', 'Department deleted successfully!');
     }
 }
