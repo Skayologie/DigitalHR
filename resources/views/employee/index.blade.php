@@ -56,9 +56,7 @@
                             </tbody>
 
                         </table>
-                        @if($employee)
-                            No results !
-                        @endif
+
                     </div>
 
 

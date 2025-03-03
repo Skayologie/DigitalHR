@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CursusController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\employeeController;
 use App\Http\Controllers\managerController;
@@ -29,11 +30,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/dashboard', function () {
-    $roles = Role::all();
-    $department = Department::all();
-    return view('admin.dashboard',["Roles"=>$roles]);
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 
 Route::middleware(['auth','isAdmin'])->group(function () {
@@ -61,14 +58,14 @@ Route::middleware(['auth','isAdmin'])->group(function () {
 
 
 
-    Route::get('/Admin', function () {
-        $roles = Role::all();
-        $department = Department::all();
-        return view('admin.dashboard',[
-            "Roles"=>$roles,
-            "departments"=>$department
-        ]);
-    })->name('Admin');
+//    Route::get('/Admin', function () {
+//        $roles = Role::all();
+//        $department = Department::all();
+//        return view('admin.dashboard',[
+//            "Roles"=>$roles,
+//            "departments"=>$department
+//        ]);
+//    })->name('Admin');
 
     Route::get('/Admin/Dashboard', function () {
         $department = Department::all();

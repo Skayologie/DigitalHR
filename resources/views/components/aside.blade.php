@@ -11,37 +11,37 @@
     <div class="overflow-y-auto h-full py-4">
         <div class="px-4 text-xs text-indigo-300 uppercase font-semibold mb-2">Main</div>
 
-        <x-nav-link :href="route('Admin')" :active="request()->routeIs('dashboard')">
+        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
             <i class="fas fa-th-large w-6"></i>
             {{ __('Dashboard') }}
         </x-nav-link>
 
-        <x-nav-link :href="route('Admin.Manager.Rh')" :active="request()->routeIs('/Admin/Manage/Rh')">
+        <x-nav-link :href="route('Admin.Manager.Rh')" :active="request()->routeIs('Admin.Manager.Rh')">
             <i class="fas fa-user-tie w-6"></i>
             {{ __('Manage HR') }}
         </x-nav-link>
 
-        <x-nav-link :href="route('permissions.index')" :active="request()->routeIs('dashboard')">
+        <x-nav-link :href="route('permissions.index')" :active="request()->routeIs('permissions.index')">
             <i class="fas fa-shield-alt w-6"></i>
             {{ __('Roles & Permissions') }}
         </x-nav-link>
 
-        <x-nav-link :href="route('departments.index')" :active="request()->routeIs('dashboard')">
+        <x-nav-link :href="route('departments.index')" :active="request()->routeIs('departments.index')">
             <i class="fas fa-building w-6"></i>
             {{ __('Manage Departments') }}
         </x-nav-link>
 
-        <x-nav-link :href="route('users.index')" :active="request()->routeIs('dashboard')">
+        <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
             <i class="fas fa-users w-6"></i>
             {{ __('Manage All Users') }}
         </x-nav-link>
 
-        <x-nav-link :href="route('manage.managers')" :active="request()->routeIs('dashboard')">
+        <x-nav-link :href="route('manage.managers')" :active="request()->routeIs('manage.managers')">
             <i class="fas fa-user-cog w-6"></i>
             {{ __('Manage Managers') }}
         </x-nav-link>
 
-        <x-nav-link :href="route('manage.employee')" :active="request()->routeIs('dashboard')">
+        <x-nav-link :href="route('manage.employee')" :active="request()->routeIs('manage.employee')">
             <i class="fas fa-user-friends w-6"></i>
             {{ __('Manage Employees') }}
         </x-nav-link>
