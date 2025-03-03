@@ -172,7 +172,7 @@
                                         {{$user->salary}} Dh
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{$user->getRoleNames()->first()}} <strong class="text-black">in</strong> {{optional($user->department)->name ?? "Hello"}}
+                                        {{$user->getRoleNames()->first()}} <strong class="text-black">in</strong> {{optional($user->department)->name }}
                                     </td>
                                     <td class="px-6 py-4">
                                         {{$user->created_at}}

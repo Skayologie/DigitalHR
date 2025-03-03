@@ -36,12 +36,12 @@
             {{ __('Manage All Users') }}
         </x-nav-link>
 
-        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+        <x-nav-link :href="route('manage.managers')" :active="request()->routeIs('dashboard')">
             <i class="fas fa-user-cog w-6"></i>
             {{ __('Manage Managers') }}
         </x-nav-link>
 
-        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+        <x-nav-link :href="route('manage.employee')" :active="request()->routeIs('dashboard')">
             <i class="fas fa-user-friends w-6"></i>
             {{ __('Manage Employees') }}
         </x-nav-link>

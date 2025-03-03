@@ -29,13 +29,27 @@ class UserController extends Controller
     }
 
     public function store(UserRequest $request){
-        $data = $request->validated();
+//        $data = $request->validated();
+        $data = $request->validate([
+            "name" => "required|string|max:255",
+            "email" => "required|email|unique:users,email",
+            "userImage" => "nullable|image|mimes:jpeg,png,jpg,gif|max:2048",
+            "department_id" => "required|exists:departments,id",
+            "role" => "required|string|exists:roles,name",
+            "gender" => "required|in:male,female,other",
+            "salary" => "required|numeric|min:0",
+            "national_id" => "required|string|unique:users,national_id|max:20",
+            "phone_number" => "required|string|max:15",
+            "birth_date" => "required|date|before:today",
+            "address" => "required|string|max:255",
+        ]);
         $password = "Login@1234";
         $data["password"] = $password;
         if ($request->hasFile('userImage')) {
-            $imagePath = $request->file('userImage')->store('profiles', 'public'); // Saves to storage/app/public/uploads
+            $imagePath = $request->file('userImage')->store('profiles', 'public');
             $data["userImage"] = $imagePath;
         }
+//        dd($data);
         $user = User::create($data);
         $user->assignRole($request->role);
         $email = $data["email"];
@@ -63,20 +77,20 @@ class UserController extends Controller
         );
     }
     public function update(UserRequest $request, User $user) {
-        $data = $request->validated();
+        $data = $request->input();
 
         if ($request->hasFile('userImage')) {
-            $imagePath = $request->file('userImage')->store('profiles', 'public'); // Saves to storage/app/public
+            $imagePath = $request->file('userImage')->store('profiles', 'public');
             $data["userImage"] = $imagePath;
         }
+//        dd($data);
 
-        // Update the specific user instance
         $user->update($data);
 
-        // Assign role (make sure role exists)
         if ($request->has('role')) {
             $user->syncRoles([$request->role]);
         }
+
 
         return redirect()->route("users.index")->with('success', 'User Has Been Updated Successfully');
     }

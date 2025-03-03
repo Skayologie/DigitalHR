@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CursusController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\employeeController;
+use App\Http\Controllers\managerController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RhController;
@@ -38,6 +40,7 @@ Route::middleware(['auth','isAdmin'])->group(function () {
     Route::post('/Admin/User/Create',[UserController::class,'store'])->name("user.store");
     Route::get('/Admin/User/{user}/edit',[UserController::class,'edit'])->name("users.update");
     Route::post('/Admin/User/{user}',[UserController::class,'update'])->name("users.edit");
+//    Route::post('/Admin/User/{user}',[UserController::class,'destroy'])->name("users.destroy");
 
     Route::post('/Admin/User/Cursus/{id}',[UserController::class,'update'])->name("users.edit");
 
@@ -46,6 +49,7 @@ Route::middleware(['auth','isAdmin'])->group(function () {
     Route::post('/Admin/Department',[DepartmentController::class,'store'])->name("departments.store");
     Route::get('/Admin/Department/{department}/edit',[DepartmentController::class,'edit'])->name("Department.edit");
     Route::post('/Admin/Department/{department}',[DepartmentController::class,'update'])->name("Department.update");
+    Route::delete('/Admin/Department/{department}',[DepartmentController::class,'destroy'])->name("departments.destroy");
 
     Route::get('/Admin/Department/{user}', [CursusController::class, 'index'])->name('cursus.index');
 
@@ -79,6 +83,9 @@ Route::middleware(['auth','isAdmin'])->group(function () {
 
 
     route::get("/Admin/Manage/Rh",[RhController::class, 'index'])->name("Admin.Manager.Rh");
+
+    route::get("/Manage/Managers",[managerController::class, 'index'])->name("manage.managers");
+    route::get("/Manage/Employee",[employeeController::class, 'index'])->name("manage.employee");
 
 
     route::get("/Admin/Dashboard",[ProfileController::class, 'index'])->name("Admin/Dashboard");

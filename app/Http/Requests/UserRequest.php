@@ -23,17 +23,17 @@ class UserRequest extends FormRequest
     {
         return [
             //
-            "name"=>"",
-            "email"=>"",
-            'userImage' => '|image|mimes:jpeg,png,jpg,gif|max:2048',
-            "department_id" => "",
-            "role" => "",
-            "gender" => "",
-            "salary" => "",
-            "national_id" => "",
-            "phone_number" => "",
-            "birth_date" => "",
-            "address" => "",
+//            "name"=>"",
+//            "email"=>"",
+////            'userImage' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+//            "department_id" => "",
+//            "role" => "",
+//            "gender" => "",
+//            "salary" => "",
+//            "national_id" => "",
+//            "phone_number" => "",
+//            "birth_date" => "",
+//            "address" => "",
         ];
     }
 }

@@ -28,9 +28,10 @@
                                         <input type="email" value="{{$user->email}}" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required />
                                     </div>
                                     <div>
+                                        {{$user}}
                                         <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
                                         <select name="role" id="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                            <option value="{{$user->role->id}}" selected>{{$user->role->name}}</option>
+                                            <option value="{{optional($user->role)->name ?? ""}}" selected>{{optional($user->role)->name ?? "No Role Selected"}}</option>
                                             @foreach($Roles as $Role)
                                                 <option value="{{$Role->name}}"> {{ strtoupper( $Role->name)}}</option>
                                             @endforeach
@@ -40,7 +41,7 @@
                                         <div>
                                             <label for="department" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department</label>
                                             <select name="department_id" id="department" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                <option selected value="{{optional($user->department)->id ?? "-1"}}">{{optional($user->department)->name ?? "not selected"}}</option>
+                                                <option selected value="{{optional($user->department)->id ?? ""}}">{{optional($user->department)->name ?? "No Department Selected"}}</option>
                                                 @foreach($departments as $department)
                                                     <option value="{{$department->id}}"> {{ strtoupper( $department->name)}}</option>
                                                 @endforeach

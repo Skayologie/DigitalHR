@@ -33,7 +33,8 @@ class DepartmentController extends Controller
         //
         $data = $request->validated();
         department::create($data);
-        dd($data);
+        return redirect()->route('departments.index')->with('success', 'Department Added successfully!');
+//        dd($data);
     }
 
     /**
