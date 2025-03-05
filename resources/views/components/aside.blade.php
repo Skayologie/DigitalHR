@@ -10,45 +10,81 @@
     <!-- Sidebar Links -->
     <div class="overflow-y-auto h-full py-4">
         <div class="px-4 text-xs text-indigo-300 uppercase font-semibold mb-2">Main</div>
+        @role('admin')
+            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <i class="fas fa-th-large w-6"></i>
+                {{ __('Dashboard') }}
+            </x-nav-link>
+            <x-nav-link :href="route('Admin.Manager.Rh')" :active="request()->routeIs('Admin.Manager.Rh')">
+                <i class="fas fa-user-tie w-6"></i>
+                {{ __('Manage HR') }}
+            </x-nav-link>
+            <x-nav-link :href="route('permissions.index')" :active="request()->routeIs('permissions.index')">
+                <i class="fas fa-shield-alt w-6"></i>
+                {{ __('Roles & Permissions') }}
+            </x-nav-link>
+            <x-nav-link :href="route('departments.index')" :active="request()->routeIs('departments.index')">
+                <i class="fas fa-building w-6"></i>
+                {{ __('Manage Departments') }}
+            </x-nav-link>
+            <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                <i class="fas fa-users w-6"></i>
+                {{ __('Manage All Users') }}
+            </x-nav-link>
 
-        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-            <i class="fas fa-th-large w-6"></i>
-            {{ __('Dashboard') }}
-        </x-nav-link>
+            <x-nav-link :href="route('manage.managers')" :active="request()->routeIs('manage.managers')">
+                <i class="fas fa-user-cog w-6"></i>
+                {{ __('Manage Managers') }}
+            </x-nav-link>
 
-        <x-nav-link :href="route('Admin.Manager.Rh')" :active="request()->routeIs('Admin.Manager.Rh')">
-            <i class="fas fa-user-tie w-6"></i>
-            {{ __('Manage HR') }}
-        </x-nav-link>
+            <x-nav-link :href="route('manage.employee')" :active="request()->routeIs('manage.employee')">
+                <i class="fas fa-user-friends w-6"></i>
+                {{ __('Manage Employees') }}
+            </x-nav-link>
+            <x-nav-link :href="route('manage/leave')" :active="request()->routeIs('manage/leave')">
+                <i class="fas fa-user-cog w-6"></i>
+                {{ __('Manage leave') }}
+            </x-nav-link>
+        @endrole
 
-        <x-nav-link :href="route('permissions.index')" :active="request()->routeIs('permissions.index')">
-            <i class="fas fa-shield-alt w-6"></i>
-            {{ __('Roles & Permissions') }}
-        </x-nav-link>
+        @role('Rh')
+            <x-nav-link :href="route('manage.employee')" :active="request()->routeIs('manage.employee')">
+                <i class="fas fa-user-friends w-6"></i>
+                {{ __('Manage Employees') }}
+            </x-nav-link>
+            <x-nav-link :href="route('manage.managers')" :active="request()->routeIs('manage.managers')">
+                <i class="fas fa-user-cog w-6"></i>
+                {{ __('Manage Managers') }}
+            </x-nav-link>
+            <x-nav-link :href="route('manage.managers')" :active="request()->routeIs('manage.managers')">
+                <i class="fas fa-user-cog w-6"></i>
+                {{ __('Manage leave') }}
+            </x-nav-link>
+        @endrole
+        @role('manager')
+            <x-nav-link :href="route('manage.employee')" :active="request()->routeIs('manage.employee')">
+                <i class="fas fa-user-friends w-6"></i>
+                {{ __('Assign Formations') }}
+            </x-nav-link>
+            <x-nav-link :href="route('manage.employee')" :active="request()->routeIs('manage.employee')">
+                <i class="fas fa-user-friends w-6"></i>
+                {{ __('Employee in my department') }}
+            </x-nav-link>
+        @endrole
+        @role('employee')
+            <x-nav-link :href="route('manage.employee')" :active="request()->routeIs('manage.employee')">
+                <i class="fas fa-user-friends w-6"></i>
+                {{ __('Entreprise Informations') }}
+            </x-nav-link>
+            <x-nav-link :href="route('manage.employee')" :active="request()->routeIs('manage.employee')">
+                <i class="fas fa-user-friends w-6"></i>
+                {{ __('Manage Profile') }}
+            </x-nav-link>
+        @endrole
 
-        <x-nav-link :href="route('departments.index')" :active="request()->routeIs('departments.index')">
-            <i class="fas fa-building w-6"></i>
-            {{ __('Manage Departments') }}
-        </x-nav-link>
 
-        <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
-            <i class="fas fa-users w-6"></i>
-            {{ __('Manage All Users') }}
-        </x-nav-link>
 
-        <x-nav-link :href="route('manage.managers')" :active="request()->routeIs('manage.managers')">
-            <i class="fas fa-user-cog w-6"></i>
-            {{ __('Manage Managers') }}
-        </x-nav-link>
 
-        <x-nav-link :href="route('manage.employee')" :active="request()->routeIs('manage.employee')">
-            <i class="fas fa-user-friends w-6"></i>
-            {{ __('Manage Employees') }}
-        </x-nav-link>
 
-        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-            <i class="fas fa-briefcase w-6"></i>
-            {{ __('Manage Portfolio') }}
-        </x-nav-link>
     </div>
 </div>

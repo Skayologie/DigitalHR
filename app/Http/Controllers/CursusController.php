@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cursus;
 use App\Http\Requests\StoreCursusRequest;
 use App\Http\Requests\UpdateCursusRequest;
+use App\Models\Formation;
 use App\Models\User;
 
 class CursusController extends Controller
@@ -16,6 +17,7 @@ class CursusController extends Controller
     {
         //
         return view("cursus.index",[
+            'career'=>Cursus::all(),
             "user"=>$user
         ]);
     }
@@ -23,9 +25,14 @@ class CursusController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(User $user)
     {
-        //
+
+        return view("cursus.create",[
+            'user'=>User::where(),
+            'formations'=>Formation::all(),
+
+        ]);
     }
 
     /**

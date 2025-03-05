@@ -11,9 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cursuses', function (Blueprint $table) {
+        Schema::create('cursus', function (Blueprint $table) {
             $table->id();
-
+            $table->unsignedBigInteger('user_id')->nullable()->change();
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+//            $table->unsignedBigInteger('grade_id')->nullable()->change();
+//            $table->foreign('grade_id')->references('id')->on('users')->cascadeOnDelete();
+//            $table->foreignId('grade_id')->constrained();
+//            $table->unsignedBigInteger('post_id')->nullable()->change();
+//            $table->foreign('post_id')->references('id')->on('jobs')->cascadeOnDelete();
+            $table->unsignedBigInteger('formation_id')->nullable();
+            $table->foreign('formation_id')->references("id")->on("formations");
+//            $table->foreignId('contract_id')->constrained();
+//            $table->foreignId('post_id')->constrained();
+            $table->date('date_debut');
+            $table->date('date_fin')->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }
@@ -23,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cursuses');
+        Schema::dropIfExists('cursus');
     }
 };

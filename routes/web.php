@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CongeController;
 use App\Http\Controllers\CursusController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
@@ -34,12 +35,14 @@ Route::get('/dashboard', [DashboardController::class,'index'])->middleware(['aut
 
 
 Route::middleware(['auth','isAdmin'])->group(function () {
+
     Route::post('/Admin/User/Create',[UserController::class,'store'])->name("user.store");
     Route::get('/Admin/User/{user}/edit',[UserController::class,'edit'])->name("users.update");
     Route::post('/Admin/User/{user}',[UserController::class,'update'])->name("users.edit");
 //    Route::post('/Admin/User/{user}',[UserController::class,'destroy'])->name("users.destroy");
 
     Route::post('/Admin/User/Cursus/{id}',[UserController::class,'update'])->name("users.edit");
+    Route::get('/Admin/User/Cursus/Create/{user}',[CursusController::class,'create'])->name("users.create");
 
 
     Route::get('/Admin/Department',[DepartmentController::class,'index'])->name("departments.index");
@@ -87,9 +90,21 @@ Route::middleware(['auth','isAdmin'])->group(function () {
 
     route::get("/Admin/Dashboard",[ProfileController::class, 'index'])->name("Admin/Dashboard");
 });
+Route::middleware(['isRh'])->group(function () {
+    route::get("/Manage/leave",[CongeController::class, 'index'])->name("manage/leave");
+    Route::get('/Rh/Conge/accept/{id}',[RhController::class,'acceptConge'])->name("Conge.accept");
+    Route::get('/Rh/Conge/refuse/{id}',[RhController::class,'refuseConge'])->name("Conge.refuse");
+});
+Route::middleware(['isManager'])->group(function () {
+    route::get("/ShowEmployee",[managerController::class, 'showEmployees'])->name("manager/showDepartmentEmployee");
+
+});
 
 
 
+Route::middleware(['auth'])->group(function(){
+
+});
 
 
 Route::middleware('auth')->group(function () {

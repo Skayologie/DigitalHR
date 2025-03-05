@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Conge;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -21,5 +22,14 @@ class RhController extends Controller
 
             ]
         );
+    }
+
+    public function acceptConge($id){
+        Conge::where('id',$id)->update(['RhAccept' => 1,'status' => "accepted"]);
+        return redirect()->route("manage/leave");
+    }
+    public function refuseConge($id){
+        Conge::where('id',$id)->update(['RhAccept' => 0,'status' => "refused"]);
+        return redirect()->route("manage/leave");
     }
 }

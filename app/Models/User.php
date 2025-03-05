@@ -67,4 +67,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(department::class,"id","department_id");
     }
+    public function conge(): HasOne
+    {
+        return $this->hasOne(Conge::class,"user_id","id");
+    }
 }

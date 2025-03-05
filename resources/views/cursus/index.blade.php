@@ -11,7 +11,7 @@
                 </svg>
             </button>
         </div>
-
+{{$career}}
         <!-- User Profile -->
         <div class="flex flex-col items-center pt-6 pb-4">
             <div class="w-24 h-24 rounded-full overflow-hidden bg-blue-500 mb-3">
@@ -64,7 +64,9 @@
             </div>
 
             <div class="mt-4 text-right">
-                <button class="text-blue-500 font-medium">Enrôler</button>
+                <a href="{{route("users.create",$user->id)}}">
+                    <button class="text-blue-500 font-medium">Enrôler</button>
+                </a>
             </div>
         </div>
 

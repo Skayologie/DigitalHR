@@ -12,6 +12,6 @@ class DashboardController extends Controller
     public function index(){
         $roles = Role::all();
         $department = Department::all();
-        return view('admin.dashboard',["Roles"=>$roles]);
+        return view('Home.index',["Roles"=>$roles]);
     }
 }

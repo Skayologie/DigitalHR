@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class isAdmin
+class isRh
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,8 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Auth::check() || !Auth::user()->hasRole('admin')){
-            abort(403, 'Unauthorized | This place is only for admin');
+        if (!Auth::check() || !Auth::user()->hasRole('rh')){
+            abort(403, 'Unauthorized | You are in incorrect place !');
         }
         return $next($request);
     }
