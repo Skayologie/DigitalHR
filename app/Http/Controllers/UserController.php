@@ -41,8 +41,10 @@ class UserController extends Controller
             "national_id" => "required|string|unique:users,national_id|max:20",
             "phone_number" => "required|string|max:15",
             "birth_date" => "required|date|before:today",
+            "start_work_at" => "required|date|before:today",
             "address" => "required|string|max:255",
         ]);
+        dd($data["start_work_at"]);
         $password = "Login@1234";
         $data["password"] = $password;
         if ($request->hasFile('userImage')) {
@@ -73,7 +75,8 @@ class UserController extends Controller
                 "user"=>$user,
                 "users"=>$users,
                 "Roles"=>$roles,
-                "departments"=>$department]
+                "departments"=>$department
+            ]
         );
     }
     public function update(UserRequest $request, User $user) {

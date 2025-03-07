@@ -56,7 +56,7 @@
                 <i class="fas fa-user-cog w-6"></i>
                 {{ __('Manage Managers') }}
             </x-nav-link>
-            <x-nav-link :href="route('manage.managers')" :active="request()->routeIs('manage.managers')">
+            <x-nav-link :href="route('manage/leave')" :active="request()->routeIs('manage.managers')">
                 <i class="fas fa-user-cog w-6"></i>
                 {{ __('Manage leave') }}
             </x-nav-link>
@@ -69,6 +69,10 @@
             <x-nav-link :href="route('manage.employee')" :active="request()->routeIs('manage.employee')">
                 <i class="fas fa-user-friends w-6"></i>
                 {{ __('Employee in my department') }}
+            </x-nav-link>
+            <x-nav-link :href="route('manager/leave')" :active="request()->routeIs('/Manager/Manage/leave')">
+                <i class="fas fa-user-cog w-6"></i>
+                {{ __('Manage leave') }}
             </x-nav-link>
         @endrole
         @role('employee')

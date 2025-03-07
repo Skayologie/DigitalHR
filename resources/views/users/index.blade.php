@@ -90,14 +90,20 @@
                                                         <input type="text" name="national_id" id="national_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="BJ0000" required />
                                                     </div>
                                                 </div>
+                                                <div>
+                                                    <label for="phone_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
+                                                    <input type="number" name="phone_number" id="phone_number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="0632000000" required />
+                                                </div>
+
                                                 <div class="grid md:grid-cols-2 md:gap-6">
-                                                    <div>
-                                                        <label for="phone_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
-                                                        <input type="number" name="phone_number" id="phone_number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="0632000000" required />
-                                                    </div>
+
                                                     <div>
                                                         <label for="birth_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Birth Date</label>
                                                         <input type="date" name="birth_date" id="birth_date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="BJ0000" required />
+                                                    </div>
+                                                    <div>
+                                                        <label for="start_work_at" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start Work At</label>
+                                                        <input type="date" name="start_work_at" id="start_work_at" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="BJ0000" required />
                                                     </div>
                                                 </div>
                                                 <div>
@@ -145,6 +151,9 @@
                                     Joined At
                                 </th>
                                 <th scope="col" class="px-6 py-3">
+                                    Start At
+                                </th>
+                                <th scope="col" class="px-6 py-3">
                                     Action
                                 </th>
                             </tr>
@@ -176,6 +185,9 @@
                                     </td>
                                     <td class="px-6 py-4">
                                         {{$user->created_at}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{$user->start_work_at}}
                                     </td>
                                     <td class="px-6 py-4">
                                         <a href="{{route('users.update',$user->id)}}">

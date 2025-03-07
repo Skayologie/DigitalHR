@@ -54,7 +54,12 @@
                     <img src="/api/placeholder/40/40" alt="User avatar" class="h-8 w-8 rounded-full bg-indigo-300">
                     <div class="flex flex-col items-start">
                         <span class="text-sm font-medium text-gray-700">{{ Auth::user()->name }}</span>
-                        <span class="text-xs text-gray-500">Admin</span>
+                        @if(Auth::user()->roles[0]->name === "manage")
+                            <span class="text-xs text-gray-500">{{Auth::user()->roles[0]->name}} of {{Auth::user()->department->name}}</span>
+                        @else
+                            <span class="text-xs text-gray-500">{{Auth::user()->roles[0]->name}}</span>
+                        @endif
+                        <span class="text-xs text-gray-500"></span>
                     </div>
                     <i class="fas fa-chevron-down text-xs text-gray-500"></i>
                 </button>

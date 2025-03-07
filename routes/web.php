@@ -90,16 +90,17 @@ Route::middleware(['auth','isAdmin'])->group(function () {
 
     route::get("/Admin/Dashboard",[ProfileController::class, 'index'])->name("Admin/Dashboard");
 });
+
+Route::middleware(['isManager'])->group(function () {
+    route::get("/ShowEmployee",[managerController::class, 'showEmployees'])->name("manager/showDepartmentEmployee");
+    route::get("/Manager/Manage/leave",[managerController::class, 'showConge'])->name("manager/leave");
+
+});
 Route::middleware(['isRh'])->group(function () {
-    route::get("/Manage/leave",[CongeController::class, 'index'])->name("manage/leave");
+    route::get("/Manage/leaves",[RhController::class, 'showAcceptedCongeFromManager'])->name("manage/leave");
     Route::get('/Rh/Conge/accept/{id}',[RhController::class,'acceptConge'])->name("Conge.accept");
     Route::get('/Rh/Conge/refuse/{id}',[RhController::class,'refuseConge'])->name("Conge.refuse");
 });
-Route::middleware(['isManager'])->group(function () {
-    route::get("/ShowEmployee",[managerController::class, 'showEmployees'])->name("manager/showDepartmentEmployee");
-
-});
-
 
 
 Route::middleware(['auth'])->group(function(){

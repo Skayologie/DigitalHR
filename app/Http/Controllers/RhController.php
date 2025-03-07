@@ -24,6 +24,12 @@ class RhController extends Controller
         );
     }
 
+    public function showAcceptedCongeFromManager(){
+        return view("Conge.index", [
+                "conge"=>Conge::all()
+            ]
+        );
+    }
     public function acceptConge($id){
         Conge::where('id',$id)->update(['RhAccept' => 1,'status' => "accepted"]);
         return redirect()->route("manage/leave");

@@ -16,7 +16,7 @@ class isRh
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Auth::check() || !Auth::user()->hasRole('rh')){
+        if (!Auth::check() || !Auth::user()->hasRole('Rh')){
             abort(403, 'Unauthorized | You are in incorrect place !');
         }
         return $next($request);

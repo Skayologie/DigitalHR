@@ -33,7 +33,9 @@ class User extends Authenticatable
         'phone_number',
         'address',
         'userImage',
-        'department_id'
+        'department_id',
+        'solde_conge',
+        'start_work_at'
     ];
 
     /**
@@ -70,5 +72,8 @@ class User extends Authenticatable
     public function conge(): HasOne
     {
         return $this->hasOne(Conge::class,"user_id","id");
+    }
+    public function user_conge(){
+        return $this->hasOne(User_conge::class,"user_id","id");
     }
 }

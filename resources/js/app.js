@@ -1,6 +1,7 @@
 import './bootstrap';
 
 import Alpine from 'alpinejs';
+import {document} from "postcss";
 
 window.Alpine = Alpine;
 
@@ -46,7 +47,5 @@ document.addEventListener('click', function(event) {
         dropdown.classList.add('hidden');
     }
 });
-
-
 
 

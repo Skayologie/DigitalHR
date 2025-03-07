@@ -44,27 +44,62 @@
                     </thead>
                     <tbody>
                     <!-- Leave Request Row 1 -->
-                    @foreach($conge as $con)
+                    @role('manager')
+                        @foreach($conge as $con)
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="p-3 flex items-center">
+                                    <div class="w-10 h-10 bg-blue-500 rounded-full mr-3 flex items-center justify-center text-white">JD</div>
+                                    {{$con->name}}
+                                </td>
+                                <td class="p-3">{{$con->department->name}}</td>
+                                <td class="p-3">{{$con->conge->start_at}}</td>
+                                <td class="p-3">{{$con->conge->duration}} days</td>
+                                <td class="p-3">
+                                    <span class="
+                                        px-2 py-1 rounded-full text-xs
+                                        {{ optional($con->conge)->status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
+                                           (optional($con->conge)->status === 'accepted' ? 'bg-green-100 text-green-800' :
+                                           'bg-red-100 text-red-800') }}">
+                                        {{ optional($con->conge)->status }}
+                                    </span>
+                                </td>
+                                <td class="p-3">
+                                    <div class="flex space-x-2">
+                                        @if(optional($con->conge)->status === "pending")
+                                            <a href="../../Rh/Conge/accept/{{$con->id}}">
+                                                <button class="bg-green-500 text-white px-2 py-1 rounded text-xs hover:bg-green-600">Approve</button>
+                                            </a>
+                                            <a href="../../../Rh/Conge/refuse/{{$con->id}}">
+                                                <button class="bg-red-500 text-white px-2 py-1 rounded text-xs hover:bg-red-600">Reject</button>
+                                            </a>
+                                        @endif
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endrole
+                    @role('Rh')
+                        @foreach($conge as $con)
                         <tr class="border-b hover:bg-gray-50">
                             <td class="p-3 flex items-center">
                                 <div class="w-10 h-10 bg-blue-500 rounded-full mr-3 flex items-center justify-center text-white">JD</div>
-                                {{$con->name}}
+                                {{$con->user->name}}
                             </td>
-                            <td class="p-3">{{$con->department->name}}</td>
-                            <td class="p-3">{{optional($con->conge)->start_at}}</td>
-                            <td class="p-3">{{optional($con->conge)->duration}} days</td>
+                            <td class="p-3">{{optional($con->user->department)->name}}</td>
+                            <td class="p-3">{{$con->start_at}}</td>
+                            <td class="p-3">{{$con->duration}} days</td>
                             <td class="p-3">
                                 <span class="
                                     px-2 py-1 rounded-full text-xs
-                                    {{ optional($con->conge)->status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
-                                       (optional($con->conge)->status === 'accepted' ? 'bg-green-100 text-green-800' :
+                                    {{ optional($con)->status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
+                                       (optional($con)->status === 'accepted' ? 'bg-green-100 text-green-800' :
                                        'bg-red-100 text-red-800') }}">
-                                    {{ optional($con->conge)->status }}
+                                    {{ optional($con)->status }}
                                 </span>
                             </td>
                             <td class="p-3">
                                 <div class="flex space-x-2">
-                                    @if(optional($con->conge)->status === "pending")
+                                    @if(optional($con)->status === "pending")
                                         <a href="../../Rh/Conge/accept/{{$con->id}}">
                                             <button class="bg-green-500 text-white px-2 py-1 rounded text-xs hover:bg-green-600">Approve</button>
                                         </a>
@@ -76,6 +111,7 @@
                             </td>
                         </tr>
                     @endforeach
+                    @endrole
 
                     <!-- More rows can be added similarly -->
                     </tbody>
