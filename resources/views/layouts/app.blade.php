@@ -29,6 +29,7 @@
         </style>
         <!-- Scripts -->
         @vite(['resources/js/app.js','resources/css/app.css'])
+
     </head>
     <body class="bg-gray-100 flex h-screen overflow-hidden">
         <!-- Sidebar -->
@@ -43,10 +44,7 @@
             {{ $slot }}
             </main>
         </div>
-
         <script>
-            let table = new DataTable('#table');
-
 
         </script>
         <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>

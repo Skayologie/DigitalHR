@@ -104,7 +104,10 @@ Route::middleware(['isRh'])->group(function () {
 
 
 Route::middleware(['auth'])->group(function(){
-
+    route::post('Conge/SendRequest',[CongeController::class,'store'])->name("conge.request");
+    route::get('Conge/requests',[CongeController::class,'showMyRequests'])->name("conge.ShowRequests");
+    route::get('Conge/showDetails/{user}',[CongeController::class,'showRequestDetails'])->name("conge.ShowRequestDetail");
+    route::get('Conge/AllRequests',[CongeController::class,'AllRequests'])->name("conge.AllRequests");
 });
 
 

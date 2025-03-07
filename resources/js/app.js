@@ -1,7 +1,7 @@
 import './bootstrap';
 
 import Alpine from 'alpinejs';
-import {document} from "postcss";
+// import {document} from "postcss";
 
 window.Alpine = Alpine;
 
@@ -47,5 +47,19 @@ document.addEventListener('click', function(event) {
         dropdown.classList.add('hidden');
     }
 });
+let dateDeDebut = document.getElementById("dateDeDebut");
+let durationInput = document.getElementById("duration");
+let dateDeFin = document.getElementById("dateDeFin");
+
+durationInput.addEventListener("input", () => {
+    let startDate = new Date(dateDeDebut.value);
+    let duration = parseInt(durationInput.value, 10);
+
+    if (!isNaN(startDate.getTime()) && !isNaN(duration)) {
+        startDate.setUTCDate(startDate.getUTCDate() + duration);
+        dateDeFin.value = startDate.toISOString().split('T')[0];
+    }
+});
+
 
 

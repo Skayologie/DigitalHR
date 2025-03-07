@@ -8,9 +8,12 @@ use Illuminate\Http\Request;
 class User_conge extends Model
 {
     protected $table = "user_conges_information";
-
-    public function User(){
-        return $this->hasOne(User::class,"user_id","id");
+    protected $fillable = [
+        "conges_restants",
+        "Conges_pris"
+    ];
+    public function user(){
+        return $this->hasOne(User::class,"id","user_id");
     }
 
     //

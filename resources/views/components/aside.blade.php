@@ -76,9 +76,17 @@
             </x-nav-link>
         @endrole
         @role('employee')
+            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <i class="fas fa-user-friends w-6"></i>
+                {{ __('Dashboard') }}
+            </x-nav-link>
             <x-nav-link :href="route('manage.employee')" :active="request()->routeIs('manage.employee')">
                 <i class="fas fa-user-friends w-6"></i>
                 {{ __('Entreprise Informations') }}
+            </x-nav-link>
+            <x-nav-link :href="route('conge.ShowRequests')" :active="request()->routeIs('conge.ShowRequests')">
+                <i class="fas fa-user-friends w-6"></i>
+                {{ __('My leaves requests') }}
             </x-nav-link>
             <x-nav-link :href="route('manage.employee')" :active="request()->routeIs('manage.employee')">
                 <i class="fas fa-user-friends w-6"></i>
