@@ -96,7 +96,7 @@ Route::middleware(['isManager'])->group(function () {
     route::get("/Manager/Manage/leave",[managerController::class, 'showConge'])->name("manager/leave");
 
 });
-Route::middleware(['isRh'])->group(function () {
+Route::middleware(['isRh|'])->group(function () {
     route::get("/Manage/leaves",[RhController::class, 'showAcceptedCongeFromManager'])->name("manage/leave");
     Route::get('/Rh/Conge/accept/{id}',[RhController::class,'acceptConge'])->name("Conge.accept");
     Route::get('/Rh/Conge/refuse/{id}',[RhController::class,'refuseConge'])->name("Conge.refuse");
@@ -115,7 +115,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
 
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.index');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post("/logout",function (){Auth::logout();})->name("logout");

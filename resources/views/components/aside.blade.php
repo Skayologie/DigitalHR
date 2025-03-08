@@ -88,7 +88,7 @@
                 <i class="fas fa-user-friends w-6"></i>
                 {{ __('My leaves requests') }}
             </x-nav-link>
-            <x-nav-link :href="route('manage.employee')" :active="request()->routeIs('manage.employee')">
+            <x-nav-link :href="route('profile.index')" :active="request()->routeIs('profile.index')">
                 <i class="fas fa-user-friends w-6"></i>
                 {{ __('Manage Profile') }}
             </x-nav-link>
